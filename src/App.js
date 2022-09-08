@@ -19,12 +19,19 @@ function App() {
       method: "POST",
 
       headers: {
-        "content-type": "'application/json'",
+        "content-type": "application/json",
       },
       body: JSON.stringify(newUser),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        const addedUser = data;
+        const newUsers = [...users, addedUser];
+        setUsers(newUsers);
+        console.log(data);
+      });
+    e.target.name.value = "";
+    e.target.email.value = "";
     e.preventDefault();
   };
   return (
